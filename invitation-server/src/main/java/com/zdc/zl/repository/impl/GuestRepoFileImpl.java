@@ -3,6 +3,8 @@ package com.zdc.zl.repository.impl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zdc.zl.model.Guest;
 import com.zdc.zl.repository.GuestRepository;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.impl.LogFactoryImpl;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -20,22 +22,23 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @Service
 public class GuestRepoFileImpl implements GuestRepository {
+    private Log logger = LogFactoryImpl.getLog(GuestRepoFileImpl.class);
     private ConcurrentHashMap<Integer, Guest> cache;
     @Value("${reservation.directory}")
     private String directory;
 
     @PostConstruct
     public void init() throws IOException {
-        System.out.println("directory = " + directory);
+        logger.info(directory);
         Files.walk(Paths.get(directory)).forEach(filePath -> {
             if (Files.isRegularFile(filePath)) {
-                System.out.println(filePath);
+                logger.info(filePath);
                 try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath.toFile()))) {
                     String json = bufferedReader.readLine();
                     Guest guest = new ObjectMapper().readValue(json, Guest.class);
                     cache.put(guest.getId(), guest);
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    logger.error(e, e);
                 }
             }
 
@@ -102,7 +105,7 @@ public class GuestRepoFileImpl implements GuestRepository {
             new ObjectMapper().writeValue(fileOutputStream, guest);
             return true;
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e, e);
             return false;
         }
     }
