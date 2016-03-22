@@ -23,7 +23,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service
 public class GuestRepoFileImpl implements GuestRepository {
     private Log logger = LogFactoryImpl.getLog(GuestRepoFileImpl.class);
-    private ConcurrentHashMap<Integer, Guest> cache;
+    private ConcurrentHashMap<Integer, Guest> cache = new ConcurrentHashMap();
     @Value("${reservation.directory}")
     private String directory;
 
@@ -47,17 +47,17 @@ public class GuestRepoFileImpl implements GuestRepository {
 
     public synchronized String getUpdateFileName() {
         LocalDateTime localDateTime = LocalDateTime.now();
-        return String.format("(%s)/update.(%4d).(%2d).(%s)", directory, localDateTime.getYear(), localDateTime.getDayOfMonth(), localDateTime.getMonth());
+        return String.format("%s/update.%4d.%02d.%02d", directory, localDateTime.getYear(), localDateTime.getDayOfMonth(), localDateTime.getMonthValue());
     }
 
     public synchronized String getReserveFileName() {
         LocalDateTime localDateTime = LocalDateTime.now();
-        return String.format("(%s)/reverve.(%4d).(%2d).(%s)", directory, localDateTime.getYear(), localDateTime.getDayOfMonth(), localDateTime.getMonth());
+        return String.format("%s/reverve.%4d.%02d.%02d", directory, localDateTime.getYear(), localDateTime.getDayOfMonth(), localDateTime.getMonthValue());
     }
 
     public synchronized String getCancelDataFileName() {
         LocalDateTime localDateTime = LocalDateTime.now();
-        return String.format("(%s)/cancel.(%4d).(%2d).(%s)", directory, localDateTime.getYear(), localDateTime.getDayOfMonth(), localDateTime.getMonth());
+        return String.format("%s/cancel.%4d.%02d.%02d", directory, localDateTime.getYear(), localDateTime.getDayOfMonth(), localDateTime.getMonthValue());
     }
 
     public boolean reserveGuest(Guest guest) {
