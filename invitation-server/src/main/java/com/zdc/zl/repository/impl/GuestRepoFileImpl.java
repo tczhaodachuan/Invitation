@@ -4,16 +4,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zdc.zl.model.Guest;
 import com.zdc.zl.repository.GuestRepository;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -39,26 +38,73 @@ public class GuestRepoFileImpl implements GuestRepository {
                     e.printStackTrace();
                 }
             }
+
         });
     }
 
-    public int reserveGuest(Guest guest) {
-        return 0;
+    public synchronized String getUpdateFileName() {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        return String.format("(%s)/update.(%4d).(%2d).(%s)", directory, localDateTime.getYear(), localDateTime.getDayOfMonth(), localDateTime.getMonth());
+    }
+
+    public synchronized String getReserveFileName() {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        return String.format("(%s)/reverve.(%4d).(%2d).(%s)", directory, localDateTime.getYear(), localDateTime.getDayOfMonth(), localDateTime.getMonth());
+    }
+
+    public synchronized String getCancelDataFileName() {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        return String.format("(%s)/cancel.(%4d).(%2d).(%s)", directory, localDateTime.getYear(), localDateTime.getDayOfMonth(), localDateTime.getMonth());
+    }
+
+    public boolean reserveGuest(Guest guest) {
+        if (cache.containsKey(guest.getId())) {
+            return false;
+        }
+        cache.put(guest.getId(), guest);
+
+        String fileName = getReserveFileName();
+        return saveToFile(guest, fileName);
     }
 
     public boolean updateGuest(Guest guest) {
-        return false;
+        if (cache.containsKey(guest.getId())) {
+            cache.put(guest.getId(), guest);
+        } else {
+            return false;
+        }
+
+        String fileName = getUpdateFileName();
+        return saveToFile(guest, fileName);
     }
 
     public boolean deleteGuest(Guest guest) {
-        return false;
+        cache.remove(guest.getId());
+        String fileName = getCancelDataFileName();
+        return saveToFile(guest, fileName);
     }
 
     public Guest findGuest(Guest guest) {
-        return null;
+        return findGuest(guest.getId());
     }
 
     public Guest findGuest(int id) {
-        return null;
+        return cache.get(id);
     }
+
+    @Override
+    public List<Guest> findAllGuests() {
+        return new ArrayList<>(cache.values());
+    }
+
+    private boolean saveToFile(Guest guest, String fileName) {
+        try (FileOutputStream fileOutputStream = new FileOutputStream(new File(fileName), true)) {
+            new ObjectMapper().writeValue(fileOutputStream, guest);
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }

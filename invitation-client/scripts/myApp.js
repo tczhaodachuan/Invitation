@@ -13,15 +13,17 @@ myApp.controller('formController', ['$scope', '$http', function ($scope, $http) 
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then(function successCallback(response) {
+        }).then(function successCallback(response, status) {
             // this callback will be called asynchronously
             // when the response is available
             console.log(response)
+            console.log(status)
             $scope.succeed = true
-        }, function errorCallback(response) {
+        }, function errorCallback(response, status) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             console.log(response)
+            console.log(status)
             $scope.failed = true
         });
     }
