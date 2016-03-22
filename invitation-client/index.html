@@ -682,6 +682,7 @@
         <form name="contact_form" class="contact_form">
             <h2 class="message" ng-show="succeed">成功保存！</h2>
             <h2 class="message" ng-show="failed">保存失败，请稍后重试！</h2>
+            <h2 class="message" ng-show="cancelled">很遗憾，未能相见！</h2>
             <div class="message">
                 <div class="col-md-6 col-sm-6 grid_6 c1">
                     <input type="text" class="text" value="姓名" placeholder="姓名" ng-model="user.name" required>
@@ -696,6 +697,7 @@
                 <div class="clearfix"></div>
             </div>
 
+            <input type="submit" class="more_btn" value="取消" ng-click="cancel(user)">
             <input type="submit" class="more_btn" value="提交" ng-click="save(user)">
         </form>
     </div>
