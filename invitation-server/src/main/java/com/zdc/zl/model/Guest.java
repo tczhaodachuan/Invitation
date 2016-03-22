@@ -1,5 +1,8 @@
 package com.zdc.zl.model;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  * Created by dachuan on 3/20/16.
  */
@@ -28,6 +31,10 @@ public class Guest {
 
     public long getNumber_of_guests() {
         return number_of_guests;
+    }
+
+    public String getCreateTime() {
+        return LocalTime.now().format(DateTimeFormatter.BASIC_ISO_DATE);
     }
 
     public void setName(String name) {

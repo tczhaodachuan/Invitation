@@ -103,6 +103,7 @@ public class GuestRepoFileImpl implements GuestRepository {
     private boolean saveToFile(Guest guest, String fileName) {
         try (FileOutputStream fileOutputStream = new FileOutputStream(new File(fileName), true)) {
             new ObjectMapper().writeValue(fileOutputStream, guest);
+            fileOutputStream.write("\n".getBytes());
             return true;
         } catch (IOException e) {
             logger.error(e, e);
