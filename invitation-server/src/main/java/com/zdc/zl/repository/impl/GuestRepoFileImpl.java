@@ -30,34 +30,36 @@ public class GuestRepoFileImpl implements GuestRepository {
     @PostConstruct
     public void init() throws IOException {
         logger.info(directory);
-        Files.walk(Paths.get(directory)).forEach(filePath -> {
-            if (Files.isRegularFile(filePath)) {
-                logger.info(filePath);
-                try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath.toFile()))) {
-                    String json = bufferedReader.readLine();
-                    Guest guest = new ObjectMapper().readValue(json, Guest.class);
-                    cache.put(guest.getId(), guest);
-                } catch (IOException e) {
-                    logger.error(e, e);
+        if (Files.exists(Paths.get(directory))) {
+            Files.walk(Paths.get(directory)).forEach(filePath -> {
+                if (Files.isRegularFile(filePath)) {
+                    logger.info(filePath);
+                    try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath.toFile()))) {
+                        String json = bufferedReader.readLine();
+                        Guest guest = new ObjectMapper().readValue(json, Guest.class);
+                        cache.put(guest.getId(), guest);
+                    } catch (IOException e) {
+                        logger.error(e, e);
+                    }
                 }
-            }
 
-        });
+            });
+        }
     }
 
     public synchronized String getUpdateFileName() {
         LocalDateTime localDateTime = LocalDateTime.now();
-        return String.format("%s/update.%4d.%02d.%02d", directory, localDateTime.getYear(), localDateTime.getDayOfMonth(), localDateTime.getMonthValue());
+        return String.format("%s/update.%4d.%02d.%02d", directory, localDateTime.getYear(), localDateTime.getMonthValue(), localDateTime.getDayOfMonth());
     }
 
     public synchronized String getReserveFileName() {
         LocalDateTime localDateTime = LocalDateTime.now();
-        return String.format("%s/reverve.%4d.%02d.%02d", directory, localDateTime.getYear(), localDateTime.getDayOfMonth(), localDateTime.getMonthValue());
+        return String.format("%s/reverve.%4d.%02d.%02d", directory, localDateTime.getYear(), localDateTime.getMonthValue(), localDateTime.getDayOfMonth());
     }
 
     public synchronized String getCancelDataFileName() {
         LocalDateTime localDateTime = LocalDateTime.now();
-        return String.format("%s/cancel.%4d.%02d.%02d", directory, localDateTime.getYear(), localDateTime.getDayOfMonth(), localDateTime.getMonthValue());
+        return String.format("%s/cancel.%4d.%02d.%02d", directory, localDateTime.getYear(), localDateTime.getMonthValue(), localDateTime.getDayOfMonth());
     }
 
     public boolean reserveGuest(Guest guest) {
@@ -101,9 +103,22 @@ public class GuestRepoFileImpl implements GuestRepository {
     }
 
     private boolean saveToFile(Guest guest, String fileName) {
-        try (FileOutputStream fileOutputStream = new FileOutputStream(new File(fileName), true)) {
-            new ObjectMapper().writeValue(fileOutputStream, guest);
-            fileOutputStream.write("\n".getBytes());
+        File directory = new File(this.directory);
+        if (!directory.exists()) {
+            try {
+                directory.mkdir();
+                File file = new File(fileName);
+                file.createNewFile();
+
+            } catch (IOException e) {
+                logger.error(e, e);
+                return false;
+            }
+        }
+        try (FileWriter fileWriter = new FileWriter(new File(fileName), true)) {
+            String guestJson = new ObjectMapper().writeValueAsString(guest);
+            fileWriter.write(guestJson);
+            fileWriter.write('\n');
             return true;
         } catch (IOException e) {
             logger.error(e, e);

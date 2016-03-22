@@ -1,17 +1,19 @@
 package com.zdc.zl.model;
 
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by dachuan on 3/20/16.
  */
 public class Guest {
     private String name;
+    private int id;
     private String phone;
     private String email;
     private String message;
     private long number_of_guests;
+    private String createTime;
 
     public String getName() {
         return name;
@@ -33,12 +35,14 @@ public class Guest {
         return number_of_guests;
     }
 
-    public String getCreateTime() {
-        return LocalTime.now().format(DateTimeFormatter.BASIC_ISO_DATE);
-    }
-
     public void setName(String name) {
         this.name = name;
+        this.id = name.hashCode();
+
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date now = new Date();
+        this.createTime = sdf.format(now);
     }
 
     public void setPhone(String phone) {
@@ -58,7 +62,11 @@ public class Guest {
     }
 
     public int getId() {
-        return getName().hashCode();
+        return id;
+    }
+
+    public String getCreateTime() {
+        return createTime;
     }
 
     @Override
