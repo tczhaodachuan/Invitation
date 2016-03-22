@@ -50,6 +50,10 @@ public class Guest {
         this.number_of_guests = number_of_guests;
     }
 
+    public int getId() {
+        return getName().hashCode();
+    }
+
     @Override
     public String toString() {
         return "Guest{" +

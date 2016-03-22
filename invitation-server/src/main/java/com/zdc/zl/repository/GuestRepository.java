@@ -11,4 +11,7 @@ public interface GuestRepository {
     boolean updateGuest(Guest guest);
 
     boolean deleteGuest(Guest guest);
+
+    Guest findGuest(Guest guest);
+    Guest findGuest(int id);
 }
