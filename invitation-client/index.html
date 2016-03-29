@@ -105,7 +105,8 @@
         </audio>
     </div>
     <script>
-        document.addEventListener("touchstart", function(){}, true);
+        document.addEventListener("touchstart", function () {
+        }, true);
     </script>
     <!-- Logo -->
     <!--    <div class="logo">
@@ -674,8 +675,71 @@
         </ul>
     </div>
 </div>-->
-<!-- //Events -->
-
+<!-- Boostrap Contact -->
+<form class="form-horizontal" name="contact_form" ng-controller="formController">
+    <div class="form-group">
+        <h1>祝福留言</h1>
+    </div>
+    <h2 class="message" ng-show="succeed">成功保存！</h2>
+    <h2 class="message" ng-show="failed">保存失败，请稍后重试！</h2>
+    <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+            <label for="inputName" class="col-md-4 control-label">姓名</label>
+            <div class="col-md-8">
+                <input type="text" class="form-control" id="inputName" ng-model="user.name" placeholder="姓名" required>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-4">
+        <div class="form-group" ng-class="{ 'has-error' : contact_form.inputEmail.$invalid }">
+            <label for="inputEmail" class="col-md-4 control-label">邮件</label>
+            <div class="col-md-8">
+                <input type="email" class="form-control" id="inputEmail" name="inputEmail" ng-model="user.email"
+                       placeholder="xxxx@yy.com">
+                <p ng-show="contact_form.inputEmail.$invalid" class="help-block">邮件格式不正确</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+            <label for="inputGuestNumber" class="col-md-4 control-label">人数</label>
+            <div class="col-md-8">
+                <select class="form-control" id="inputGuestNumber" ng-model="user.number_of_guests" required>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-4">
+        <div class="form-group" ng-class="{ 'has-error' : contact_form.inputPhone.$invalid && contact_form.inputPhone.$touched }">
+            <label for="inputPhone" class="col-md-4 control-label">电话</label>
+            <div class="col-md-8">
+                <input type="tel" class="form-control" id="inputPhone" name="inputPhone" ng-model="user.phone"
+                       placeholder="1xx-xxxx-xxxx" required>
+                <p ng-show="contact_form.inputPhone.$invalid && contact_form.inputPhone.$touched" class="help-block">电话格式不正确</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+            <label for="inputMessage" class="col-md-4 control-label">留言</label>
+            <div class="col-md-8">
+            <textarea class="form-control" id="inputMessage" rows="3" ng-model="user.message"
+                      placeholder="留言"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-1 col-md-10">
+            <button type="submit" class="btn btn-default" ng-click="save(user)">提交</button>
+        </div>
+    </div>
+</form>
 <!-- Contact -->
 <div class="contact" id="contact">
     <div class="container" ng-controller="formController">
@@ -688,7 +752,8 @@
             <div class="message">
                 <div class="col-md-6 col-sm-6 grid_6 c1">
                     <input type="text" class="text" value="姓名" placeholder="姓名" ng-model="user.name" required>
-                    <input type="number" class="text" value="人数" placeholder="人数" ng-model="user.number_of_guests" required>
+                    <input type="number" class="text" value="人数" placeholder="人数" ng-model="user.number_of_guests"
+                           required>
                     <input type="text" class="text" value="邮件" placeholder="邮件" ng-model="user.email">
                     <input type="text" class="text" value="电话" placeholder="电话" ng-model="user.phone" required>
                 </div>
@@ -706,7 +771,7 @@
 
 <!-- //Contact -->
 <div class="timer-area" id="timer-area">
-    <h1>2016年05月21日</h1>
+    <h1>婚礼倒计时</h1>
     <ul id="countdown">
         <li><span class="days">00</span>
             <p class="timeRefDays">天</p>
@@ -868,37 +933,37 @@
 
 <script type="text/javascript">
     //创建和初始化地图函数：
-    function initMap(){
+    function initMap() {
         createMap();//创建地图
         setMapEvent();//设置地图事件
         addMapControl();//向地图添加控件
         //addMapOverlay();//向地图添加覆盖物
     }
-    function createMap(){
+    function createMap() {
         map = new BMap.Map("map");
-        map.centerAndZoom(new BMap.Point(113.730471,34.754604),17);
+        map.centerAndZoom(new BMap.Point(113.730471, 34.754604), 17);
         var local = new BMap.LocalSearch(map, {
-            renderOptions:{map: map}
+            renderOptions: {map: map}
         });
         local.search("艾美酒店");
     }
-    function setMapEvent(){
+    function setMapEvent() {
         map.enableScrollWheelZoom();
         map.enableKeyboard();
         //map.enableDragging();
         map.enableDoubleClickZoom()
     }
-    function addClickHandler(target,window){
-        target.addEventListener("click",function(){
+    function addClickHandler(target, window) {
+        target.addEventListener("click", function () {
             target.openInfoWindow(window);
         });
     }
     //向地图添加控件
-    function addMapControl(){
-        var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+    function addMapControl() {
+        var scaleControl = new BMap.ScaleControl({anchor: BMAP_ANCHOR_BOTTOM_LEFT});
         scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
         map.addControl(scaleControl);
-        var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_RIGHT,type:0});
+        var navControl = new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_RIGHT, type: 0});
         map.addControl(navControl);
     }
     var map;

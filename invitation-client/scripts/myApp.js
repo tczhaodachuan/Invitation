@@ -5,6 +5,7 @@ var myApp = angular.module('myApp', []);
 
 myApp.controller('formController', ['$scope', '$http', function ($scope, $http) {
     $scope.save = function (user) {
+
         console.log(user)
         $http({
             method: 'POST',
