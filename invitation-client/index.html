@@ -2,10 +2,6 @@
 <html ng-app="myApp">
 <head>
     <title>大川&朱莉</title>
-    <div id="cover">
-        <p>努力加载中...</p>
-        <img src="images/loader.gif" alt="...." style="width:48px;height:48px;padding-top: 10px">
-    </div>
     <!-- For-Mobile-Apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -36,7 +32,7 @@
     <!-- loading-CSS -->
     <link rel="stylesheet" href="css/loading.css">
     <!-- Font-Awesome-Icons-File -->
-    <link rel='stylesheet' type='text/css' href='fonts/fontawesome-webfont.ttf'>
+    <!--<link rel='stylesheet' type='text/css' href='fonts/fontawesome-webfont.ttf'>-->
     <!-- //Font-Awesome-Icons-File -->
 
     <!-- Web-Fonts -->
@@ -111,6 +107,11 @@
     <!--Timer-->
     <link rel="stylesheet" href="css/reset.css"/>
     <link rel="stylesheet" href="css/timer_style_2.css"/>
+
+    <div id="cover">
+        <p>努力加载中...</p>
+        <img src="images/loader.gif" alt="...." style="width:48px;height:48px;padding-top: 10px">
+    </div>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 <!-- Header -->
@@ -202,7 +203,7 @@
                 </div>
             </div>
         </div>
-        <div class="item">
+        <div class="container">
             <img src="images/engage/SlideBanner.png">
         </div>
         <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -915,12 +916,12 @@
 		.iw_poi_title {color:#CC5522;font-size:14px;font-weight:bold;overflow:hidden;padding-right:13px;white-space:nowrap}
 		.iw_poi_content {font:12px arial,sans-serif;overflow:visible;padding-top:4px;white-space:-moz-pre-wrap;word-wrap:break-word}
 	</style>-->
-<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+<!--<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>-->
 <!--百度地图容器-->
 <!--<div class="contact" style="margin: 3%;height: 95%" id="map"/>-->
 <!-- //Custom-JavaScript-Files -->
 
-<script type="text/javascript">
+<!--<script type="text/javascript">
     //创建和初始化地图函数：
     function initMap() {
         createMap();//创建地图
@@ -957,6 +958,6 @@
     }
     var map;
     initMap();
-</script>
+</script>-->
 </body>
 </html>
