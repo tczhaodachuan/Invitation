@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
 <head>
-
     <title>大川&朱莉</title>
-
+    <div id="cover">
+        <p>努力加载中...</p>
+        <img src="images/loader.gif" alt="...." style="width:48px;height:48px;padding-top: 10px">
+    </div>
     <!-- For-Mobile-Apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -31,9 +33,10 @@
     <!-- Swipe-Box-CSS -->
     <link rel="stylesheet" href="css/swipebox.css">
     <!-- //Custom-Theme-Files -->
-
+    <!-- loading-CSS -->
+    <link rel="stylesheet" href="css/loading.css">
     <!-- Font-Awesome-Icons-File -->
-    <link href='fonts/fontawesome-webfont.ttf' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' type='text/css' href='fonts/fontawesome-webfont.ttf'>
     <!-- //Font-Awesome-Icons-File -->
 
     <!-- Web-Fonts -->
@@ -41,6 +44,21 @@
     <link href='css/fonts.open.sans.css' rel='stylesheet' type='text/css'>
     <link href='css/fonts.open.sans.condensed.css' rel='stylesheet' type='text/css'>
     <!-- //Web-Fonts -->
+    <!-- AngularJS-File -->
+    <script type="text/javascript" src="js/angularjs/angular.min.js"></script>
+    <!-- Customer-File -->
+    <script type="text/javascript" src="scripts/myApp.js"></script>
+    <!-- Default-JavaScript-File -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <!-- Necessary-JavaScript-File-For-Bootstrap -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <!-- Navigation-JavaScript -->
+    <script type="text/javascript" src="js/jquery-func.js"></script>
+    <!-- Loading javascript -->
+    <script type="application/javascript" src="scripts/loading.js"></script>
+    <!-- TIMER -->
+    <script src="js/countdown.js"></script>
     <!--Music-->
     <style media="screen" type="text/css">
         #backgroundaudio {
@@ -125,7 +143,7 @@
             <ul class="nav-list">
                 <li class="list-item"><a class="scroll" href="#home"><i class="fa fa-home"></i></a></li>
                 <li class="list-item"><a class="scroll" href="#stats"><i class="fa fa-share"></i></a></li>
-                <li class="list-item"><a class="scroll" href="#timer-area"><i class="fa fa-calendar-check-o"></i></a>
+                <li class="list-item"><a class="scroll" href="#count_down"><i class="fa fa-calendar-check-o"></i></a>
                 </li>
                 <li class="list-item"><a class="scroll" href="#contact"><i class="fa fa-users"></i></a></li>
                 <li class="list-item"><a class="scroll" href="#map"><i class="fa fa-map-marker"></i></a></li>
@@ -676,7 +694,7 @@
     </div>
 </div>-->
 <!-- Boostrap Contact -->
-<form class="form-horizontal" name="contact_form" ng-controller="formController">
+<form class="form-horizontal" id="contact" name="contact_form" ng-controller="formController">
     <div class="form-group">
         <h1>祝福留言</h1>
     </div>
@@ -735,13 +753,13 @@
         </div>
     </div>
     <div class="form-group">
-        <div class="col-md-offset-1 col-md-10">
+        <div class="col-md-offset-2 col-md-10">
             <button type="submit" class="btn btn-default" ng-click="save(user)">提交</button>
         </div>
     </div>
 </form>
 <!-- Contact -->
-<div class="contact" id="contact">
+<!--<div class="contact" id="contact">
     <div class="container" ng-controller="formController">
 
         <h3>祝福留言</h3>
@@ -767,10 +785,10 @@
             <input type="submit" class="more_btn" value="提交" ng-click="save(user)">
         </form>
     </div>
-</div>
+</div>-->
 
-<!-- //Contact -->
-<div class="timer-area" id="timer-area">
+<!-- count down -->
+<div class="timer-area" id="count_down">
     <h1>婚礼倒计时</h1>
     <ul id="countdown">
         <li><span class="days">00</span>
@@ -845,43 +863,6 @@
 </div>
 </div>-->
 <!-- //Footer -->
-<!-- AngularJS-File -->
-<script type="text/javascript" src="js/angularjs/angular.min.js"></script>
-<!-- Customer-File -->
-<script type="text/javascript" src="scripts/myApp.js"></script>
-<!-- Default-JavaScript-File -->
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<!-- Necessary-JavaScript-File-For-Bootstrap -->
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-
-<!-- Navigation-JavaScript -->
-<script type="text/javascript" src="js/jquery-func.js"></script>
-<!--Save to a file-->
-
-<!-- TIMER -->
-<script src="js/countdown.js"></script>
-<script>
-
-    $(document).ready(function () {
-        $("#countdown").countdown({
-                    date: "21 may 2016 11:18:00",
-                    format: "on"
-                },
-
-                function () {
-                    // callback function
-                });
-    });
-
-</script>
-<script>
-    $(window).load(function () {
-        $(".btn-nav").on("click tap", function () {
-            $(".nav-container").toggleClass("showNav hideNav").removeClass("hidden");
-            $(this).toggleClass("animated");
-        });
-    });
-</script>
 <!-- //Navigation-JavaScript -->
 
 <!-- Swipe-Box-JavaScript -->
@@ -911,14 +892,6 @@
 <!-- Smooth-Scrolling-JavaScript -->
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
-<script type="text/javascript">
-    jQuery(document).ready(function ($) {
-        $(".scroll, .navbar li a, .footer li a").click(function (event) {
-            event.preventDefault();
-            $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
-        });
-    });
-</script>
 <!-- //Smooth-Scrolling-JavaScript -->
 <!--引用百度地图API-->
 <!--	<style type="text/css">
