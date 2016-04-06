@@ -892,6 +892,14 @@
 <!-- Smooth-Scrolling-JavaScript -->
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $(".scroll, .navbar li a, .footer li a").click(function (event) {
+            event.preventDefault();
+            $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
+        });
+    });
+</script>
 <!-- //Smooth-Scrolling-JavaScript -->
 <!--引用百度地图API-->
 <!--	<style type="text/css">
