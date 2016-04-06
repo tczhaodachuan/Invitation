@@ -864,6 +864,14 @@
 </div>-->
 <!-- //Footer -->
 <!-- //Navigation-JavaScript -->
+<script>
+    $(window).load(function () {
+        $(".btn-nav").on("click tap", function () {
+            $(".nav-container").toggleClass("showNav hideNav").removeClass("hidden");
+            $(this).toggleClass("animated");
+        });
+    });
+</script>
 
 <!-- Swipe-Box-JavaScript -->
 <script src="js/jquery.swipebox.min.js"></script>
