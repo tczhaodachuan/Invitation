@@ -50,6 +50,7 @@ h2 {
 }
 .timer-area h1 {
     color: black;
+    text-align: center;
 }
 /* ---------- SIGNUP ---------- */
 .form-wrapper {
