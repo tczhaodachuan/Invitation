@@ -106,8 +106,7 @@
     <div id="backgroundaudio">
         <i class="fa fa-music"></i>
         <audio class="" controls="" autoplay="" loop="" preload="">
-            <source src="music/Smile.ogg" type="audio/ogg"/>
-            <source src="music/Smile.mp3" type="audio/mpeg"/>
+            <source src="music/lucky.mp3" type="audio/mpeg"/>
         </audio>
     </div>
     <script>
@@ -122,7 +121,7 @@
 
     <!-- Navigation -->
     <div class="container">
-        <button class="btn-nav">
+        <button class="btn-nav" ng-controller="navController" ng-click="click()">
             <div class="bar arrow-top-r"></div>
             <div class="bar arrow-middle-r"></div>
             <div class="bar arrow-bottom-r"></div>
@@ -295,8 +294,8 @@
                 <h3>天时</h3>
                 <p>从相识到相知，从相知到相爱。时间是感情最好的催化剂，不见其增，日有所长。一定要在对的时间相遇，持子之手，与子偕老。</p>
                 <ol>
-                    <li>2012年2月9号，我们彼此相识。</li>
-                    <li>2014年5月21号，我们在纽约注册结婚。</li>
+                    <li>2012年2月09号，我们彼此相识。</li>
+                    <li>2014年5月29号，我们注册结婚。</li>
                 </ol>
             </div>
             <div class="clearfix"></div>
@@ -873,14 +872,14 @@
 <script src="js/countdown.js"></script>
 <!-- Loading javascript -->
 <script type="application/javascript" src="scripts/loading.js"></script>
-<script>
+<!--<script>
     $(window).load(function () {
         $(".btn-nav").on("click tap", function () {
             $(".nav-container").toggleClass("showNav hideNav").removeClass("hidden");
             $(this).toggleClass("animated");
         });
     });
-</script>
+</script>-->
 <!-- //Navigation-JavaScript -->
 
 <!-- Swipe-Box-JavaScript -->
@@ -908,7 +907,7 @@
 <!-- //Slide-To-Top JavaScript -->
 
 <!-- Smooth-Scrolling-JavaScript -->
-<script type="text/javascript" src="js/move-top.js"></script>
+<!--<script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
@@ -917,7 +916,7 @@
             $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
         });
     });
-</script>
+</script>-->
 <!-- //Smooth-Scrolling-JavaScript -->
 <!--引用百度地图API-->
 <!--	<style type="text/css">

@@ -30,3 +30,11 @@ myApp.controller('formController', ['$scope', '$http', function ($scope, $http) 
         });
     }
 }]);
+
+
+myApp.controller('navController', ['$scope', function($scope){
+    $scope.click = function(){
+        $(".nav-container").toggleClass("showNav hideNav").removeClass("hidden");
+        $(".btn-nav").toggleClass("animated");
+    }
+}]);
