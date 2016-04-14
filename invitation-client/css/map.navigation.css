@@ -1,0 +1,11 @@
+#map
+{
+    /* Preserve aspet ratio */
+/*    min-width: 100%;
+    min-height: 100%;*/
+    margin-bottom: 30%;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+}

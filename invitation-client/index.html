@@ -33,6 +33,8 @@
     <!-- //Custom-Theme-Files -->
     <!-- loading-CSS -->
     <link rel="stylesheet" href="css/loading.css">
+    <!-- map-navigation-CSS -->
+    <link rel="stylesheet" href="css/map.navigation.css">
     <!-- Font-Awesome-Icons-File -->
     <link href='fonts/fontawesome-webfont.ttf' rel='stylesheet' type='text/css'>
     <!-- //Font-Awesome-Icons-File -->
@@ -102,7 +104,7 @@
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 <!-- Header -->
-<div id="home" class="header">
+<div class="header">
     <div id="backgroundaudio">
         <i class="fa fa-music"></i>
         <audio class="" controls="" autoplay="" loop="" preload="">
@@ -129,6 +131,7 @@
         <nav class="nav-container hidden hideNav">
             <ul class="nav-list">
                 <li class="list-item"><a class="scroll" href="#home"><i class="fa fa-home"></i></a></li>
+                <li class="list-item"><a class="scroll" href="#myCarousel"><i class="fa fa-camera"></i></a></li>
                 <li class="list-item"><a class="scroll" href="#about"><i class="fa fa-venus-double"></i></a></li>
                 <li class="list-item"><a class="scroll" href="#contact"><i class="fa fa-users"></i></a></li>
                 <li class="list-item"><a class="scroll" href="#count_down"><i class="fa fa-calendar-check-o"></i></a>
@@ -138,13 +141,13 @@
         </nav>
     </div>
     <!-- //Navigation -->
-
+    <img id="home" style="display: block" src="images/cover-top.jpg">
+    <img style="display: block" src="images/cover-down.jpg">
     <!-- Carousel -->
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-
+    <div id="myCarousel" style="display: block" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <img class="first-slide" src="images/engage/engage1A.jpg" alt="Strategy">
+                <img class="first-slide" src="images/engage/engage6.jpg" alt="Strategy">
                 <div class="container">
                     <div class="carousel-caption">
                         <h3></h3>
@@ -153,7 +156,7 @@
                 </div>
             </div>
             <div class="item">
-                <img class="second-slide" src="images/engage/engage2a.jpg" alt="Strategy">
+                <img class="second-slide" src="images/engage/engage7.jpg" alt="Strategy">
                 <div class="container">
                     <div class="carousel-caption">
                         <h3></h3>
@@ -162,7 +165,7 @@
                 </div>
             </div>
             <div class="item">
-                <img class="third-slide" src="images/engage/engage3A.jpg" alt="Strategy">
+                <img class="third-slide" src="images/engage/engage8.jpg" alt="Strategy">
                 <div class="container">
                     <div class="carousel-caption">
                         <h3></h3>
@@ -171,7 +174,7 @@
                 </div>
             </div>
             <div class="item">
-                <img class="fourth-slide" src="images/engage/engage4a.jpg" alt="Strategy">
+                <img class="fourth-slide" src="images/engage/engage9.jpg" alt="Strategy">
                 <div class="container">
                     <div class="carousel-caption">
                         <h3></h3>
@@ -180,7 +183,25 @@
                 </div>
             </div>
             <div class="item">
-                <img class="fifth-slide" src="images/engage/engage5.jpg" alt="Strategy">
+                <img class="fifth-slide" src="images/engage/engage10.jpg" alt="Strategy">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img class="fifth-slide" src="images/engage/engage12.jpg" alt="Strategy">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img class="fifth-slide" src="images/engage/engage13.jpg" alt="Strategy">
                 <div class="container">
                     <div class="carousel-caption">
                         <h3></h3>
@@ -201,9 +222,9 @@
     </div>
     <!-- //Carousel -->
 </div>
-<div class="container">
+<!--<div class="container">
     <img src="images/engage/SlideBanner.png">
-</div>
+</div>-->
 <!-- //Header -->
 
 <!-- Features -->
@@ -781,10 +802,11 @@
         </li>
     </ul>
 </div>
-
-<div class="container" id="map" ng-controller="mapNavController">
-    <button type="button" class="fa fa-location-arrow" ng-click="click()">导航</button>
+<div class="container" id= "map">
+    <img src="images/map.png">
+    <button id="mapnavigation" style="float: right"  ng-controller="mapNavController" type="button" class="fa fa-location-arrow" ng-click="click()">开始导航</button>
 </div>
+
 <!-- Footer -->
 <!--<div class="footer">
 <div class="container">
@@ -895,7 +917,7 @@
 <!-- //Slide-To-Top JavaScript -->
 
 <!-- Smooth-Scrolling-JavaScript -->
-<!--<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
@@ -904,7 +926,7 @@
             $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
         });
     });
-</script>-->
+</script>
 <!-- //Smooth-Scrolling-JavaScript -->
 <!--引用百度地图API-->
 <!--	<style type="text/css">
