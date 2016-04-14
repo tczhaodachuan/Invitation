@@ -32,9 +32,15 @@ myApp.controller('formController', ['$scope', '$http', function ($scope, $http) 
 }]);
 
 
-myApp.controller('navController', ['$scope', function($scope){
-    $scope.click = function(){
+myApp.controller('navController', ['$scope', function ($scope) {
+    $scope.click = function () {
         $(".nav-container").toggleClass("showNav hideNav").removeClass("hidden");
         $(".btn-nav").toggleClass("animated");
+    }
+}]);
+
+myApp.controller('mapNavController', ['$window', '$scope', function ($window, $scope) {
+    $scope.click = function () {
+        $window.location.href = 'http://map.baidu.com/mobile/webapp/place/linesearch/foo=bar/end=word%3D%25E6%25B2%25B3%25E5%258D%2597%25E7%259C%2581%25E9%2583%2591%25E5%25B7%259E%25E5%25B8%2582%25E9%2587%2591%25E6%25B0%25B4%25E5%258C%25BA%25E9%2583%2591%25E6%25B1%25B4%25E8%25B7%25AF162%25E5%258F%25B7/?third_party=uri_api'; //You should have http here.
     }
 }]);
