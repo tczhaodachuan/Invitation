@@ -49,8 +49,8 @@
         #backgroundaudio {
             display: block;
             position: fixed;
-            bottom: -43px;
-            left: 5px;
+            top: -43px;
+            right: 5px;
             z-index: 100;
 
             -webkit-transition: all 1s ease-in-out;
@@ -61,7 +61,7 @@
         }
 
         #backgroundaudio:hover {
-            bottom: 0;
+            top: 0;
             z-index: 100;
             -webkit-transition: all 1s ease-in-out;
             -moz-transition: all 1s ease-in-out;
@@ -85,11 +85,11 @@
             font-size: 30px;
             display: block;
             background: inherit;
-            padding: 5px;
-            width: 40px;
+            padding: 0px;
+            width: 30px;
             float: none;
-            margin-bottom: 0px;
-            margin-left: 0px;
+            margin-top: 0px;
+            margin-left: 80%;
             z-index: 101;
         }
     </style>
@@ -99,17 +99,17 @@
 
     <div id="cover">
         <p>努力加载中...</p>
-        <img src="images/loader.gif" alt="...." style="width:48px;height:48px;padding-top: 10px">
+        <img src="images/loader.gif" alt="...." style="width:64px;height:64px;padding-top: 10px">
     </div>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 <!-- Header -->
 <div class="header">
     <div id="backgroundaudio">
-        <i class="fa fa-music"></i>
         <audio class="" controls="" autoplay="" loop="" preload="">
             <source src="music/lucky.mp3" type="audio/mpeg"/>
         </audio>
+        <i class="fa fa-music"></i>
     </div>
     <script>
         document.addEventListener("touchstart", function () {
@@ -122,7 +122,7 @@
     <!-- //Logo -->
 
     <!-- Navigation -->
-    <div class="container">
+    <div class="container" ng-cloak>
         <button class="btn-nav" ng-controller="navController" ng-click="click()">
             <div class="bar arrow-top-r"></div>
             <div class="bar arrow-middle-r"></div>
@@ -131,7 +131,7 @@
         <nav class="nav-container hidden hideNav">
             <ul class="nav-list">
                 <li class="list-item"><a class="scroll" href="#home"><i class="fa fa-home"></i></a></li>
-                <li class="list-item"><a class="scroll" href="#myCarousel"><i class="fa fa-camera"></i></a></li>
+                <li class="list-item"><a class="scroll" href="#gallery"><i class="fa fa-camera"></i></a></li>
                 <li class="list-item"><a class="scroll" href="#about"><i class="fa fa-venus-double"></i></a></li>
                 <li class="list-item"><a class="scroll" href="#contact"><i class="fa fa-users"></i></a></li>
                 <li class="list-item"><a class="scroll" href="#count_down"><i class="fa fa-calendar-check-o"></i></a>
@@ -144,10 +144,10 @@
     <img id="home" style="display: block" src="images/cover-top.jpg">
     <img style="display: block" src="images/cover-down.jpg">
     <!-- Carousel -->
-    <div id="myCarousel" style="display: block" class="carousel slide" data-ride="carousel">
+    <div id="gallery" style="display: block" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <img class="first-slide" src="images/engage/engage6.jpg" alt="Strategy">
+                <img class="first-slide" src="images/engage/engage1.jpg">
                 <div class="container">
                     <div class="carousel-caption">
                         <h3></h3>
@@ -156,7 +156,7 @@
                 </div>
             </div>
             <div class="item">
-                <img class="second-slide" src="images/engage/engage7.jpg" alt="Strategy">
+                <img class="second-slide" src="images/engage/engage2.jpg">
                 <div class="container">
                     <div class="carousel-caption">
                         <h3></h3>
@@ -165,7 +165,7 @@
                 </div>
             </div>
             <div class="item">
-                <img class="third-slide" src="images/engage/engage8.jpg" alt="Strategy">
+                <img class="third-slide" src="images/engage/engage3.jpg">
                 <div class="container">
                     <div class="carousel-caption">
                         <h3></h3>
@@ -174,7 +174,7 @@
                 </div>
             </div>
             <div class="item">
-                <img class="fourth-slide" src="images/engage/engage9.jpg" alt="Strategy">
+                <img class="fourth-slide" src="images/engage/engage4.jpg">
                 <div class="container">
                     <div class="carousel-caption">
                         <h3></h3>
@@ -183,25 +183,7 @@
                 </div>
             </div>
             <div class="item">
-                <img class="fifth-slide" src="images/engage/engage10.jpg" alt="Strategy">
-                <div class="container">
-                    <div class="carousel-caption">
-                        <h3></h3>
-                        <p></p>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <img class="fifth-slide" src="images/engage/engage12.jpg" alt="Strategy">
-                <div class="container">
-                    <div class="carousel-caption">
-                        <h3></h3>
-                        <p></p>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <img class="fifth-slide" src="images/engage/engage13.jpg" alt="Strategy">
+                <img class="fifth-slide" src="images/engage/engage6.jpg">
                 <div class="container">
                     <div class="carousel-caption">
                         <h3></h3>
@@ -210,11 +192,11 @@
                 </div>
             </div>
         </div>
-        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <a class="left carousel-control" href="#gallery" role="button" data-slide="prev">
             <img src="images/left.png" alt="Strategy" aria-hidden="true">
             <span class="sr-only">Previous</span>
         </a>
-        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <a class="right carousel-control" href="#gallery" role="button" data-slide="next">
             <img src="images/right.png" alt="Strategy" aria-hidden="true">
             <span class="sr-only">Next</span>
         </a>
@@ -305,39 +287,39 @@
 <!-- Principles -->
 <div class="about" id="about">
     <h1>我们的故事</h1>
-<div class="principles" id="principles">
-    <div class="container">
-        <div class="col-md-4 col-sm-4 principles-grid">
-            <div class="p-grid1">
-                <img src="images/p1.png" alt="Strategy">
+    <div class="principles" id="principles">
+        <div class="container">
+            <div class="col-md-4 col-sm-4 principles-grid">
+                <div class="p-grid1">
+                    <img src="images/p1.png" alt="Strategy">
+                </div>
+                <div class="p-grid2">
+                    <p>从相识到相知，从相知到相爱。时间是感情最好的催化剂，不见其增，日有所长。一定要在对的时间相遇，执子之手，与子偕老。</p>
+                </div>
+                <div class="clearfix"></div>
             </div>
-            <div class="p-grid2">
-                <p>从相识到相知，从相知到相爱。时间是感情最好的催化剂，不见其增，日有所长。一定要在对的时间相遇，执子之手，与子偕老。</p>
+            <div class="col-md-4 col-sm-4 principles-grid p-grid">
+                <div class="p-grid1">
+                    <img src="images/p2.png" alt="Strategy">
+                </div>
+                <div class="p-grid2">
+                    <p>我们出生在热情的河南，没能相遇。都喜欢气派的北京，也无缘相见。然而，异国他乡的纽约却让我们穿越地理的局限走在一起。恍然大悟，寻觅了大半个地球才找到与你最亲近的人。</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-4 col-sm-4 principles-grid">
+                <div class="p-grid1">
+                    <img src="images/p3.png" alt="Strategy">
+                </div>
+                <div class="p-grid2">
+                    <p>感情和新车一样需要磨合，经过摩擦去除棱角，借助沟通相互协调。爱情又像一面镜子，让你从另一半之中看见真实的自己，教你如何跟一个不同的人生活。终有一天，高山流水，举案齐眉。</p>
+                </div>
+                <div class="clearfix"></div>
             </div>
             <div class="clearfix"></div>
         </div>
-        <div class="col-md-4 col-sm-4 principles-grid p-grid">
-            <div class="p-grid1">
-                <img src="images/p2.png" alt="Strategy">
-            </div>
-            <div class="p-grid2">
-                <p>我们出生在热情的河南，没能相遇。都喜欢气派的北京，也无缘相见。然而，异国他乡的纽约却让我们穿越地理的局限走在一起。恍然大悟，寻觅了大半个地球才找到与你最亲近的人。</p>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="col-md-4 col-sm-4 principles-grid">
-            <div class="p-grid1">
-                <img src="images/p3.png" alt="Strategy">
-            </div>
-            <div class="p-grid2">
-                <p>感情和新车一样需要磨合，经过摩擦去除棱角，借助沟通相互协调。爱情又像一面镜子，让你从另一半之中看见真实的自己，教你如何跟一个不同的人生活。终有一天，高山流水，举案齐眉。</p>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="clearfix"></div>
     </div>
 </div>
-    </div>
 <!-- //Principles -->
 
 <!-- About -->
@@ -802,9 +784,11 @@
         </li>
     </ul>
 </div>
-<div class="container" id= "map">
+<div class="container" id="map">
     <img src="images/map.png">
-    <button id="mapnavigation" style="float: right"  ng-controller="mapNavController" type="button" class="fa fa-location-arrow" ng-click="click()">开始导航</button>
+    <button id="mapnavigation" style="float: right" ng-controller="mapNavController" type="button"
+            class="fa fa-location-arrow" ng-click="click()">开始导航
+    </button>
 </div>
 
 <!-- Footer -->
