@@ -285,7 +285,9 @@ h1, h2 {
 
 /*-- About --*/
 .about {
-	background-color: #4483a4;
+	margin-left: 3%;
+	margin-right: 3%;
+	/*background-color: #4483a4;*/
 	padding: 50px 0;
 }
 .about h2 {
