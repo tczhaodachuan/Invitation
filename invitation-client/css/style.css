@@ -5,6 +5,23 @@ body {
 	background:#FFF;
 	font-family: 'Open Sans', sans-serif;
 }
+
+body:before {
+	content: "";
+	display: block;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -10;
+	background: url(../images/Background.jpg) no-repeat center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
 body a {
 	transition:0.5s all;
 	-webkit-transition:0.5s all;
@@ -628,14 +645,6 @@ figure.effect-bubba:hover h4 {
 
 /*-- Contact --*/
 .contact {
-	background: url("../images/contact.jpg")no-repeat 0px 0px;
-	background-attachment: fixed;
-	background-position: center;
-	background-size: cover;
-	-webkit-background-size: cover;
-	-o-background-size: cover;
-	-ms-background-size: cover;
-	-moz-background-size: cover;
 	min-height: 485px;
 }
 .contact h3 {
@@ -1081,6 +1090,18 @@ a.mail:hover {
 	.carousel-caption h3 {
 		font-size: 75px;
 	}
+}
+@media screen and (max-width: 750px){
+	.contact{
+		background: url("../images/Background.jpg");
+		background-repeat: repeat;
+		background-attachment: fixed;
+		background-size: contain;
+		-moz-background-size: contain;
+		-o-background-size: contain;
+		-webkit-background-size: contain;
+	}
+
 }
 
 @media screen and (max-width: 768px) {

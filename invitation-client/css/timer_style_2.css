@@ -42,7 +42,7 @@ h2 {
     margin: 2em 0;
 }
 .timer-area {
-    background: inherit;
+    background: transparent;
 /*url('../images/timer-area-pattern.png') left top;*/
     text-align: center;
     padding-top: 2em;
